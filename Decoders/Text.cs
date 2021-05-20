@@ -1,4 +1,5 @@
 ﻿using System;
+// No LINQ
 
 
 namespace Morse_Decoder.Decoders
