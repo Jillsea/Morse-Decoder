@@ -1,5 +1,6 @@
 ﻿using System;
-using Morse_Decoder.Decoders;
+using System.Media;
+using Morse_Decoder.Files;
 // No LINQ
 
 namespace Morse_Decoder
@@ -8,25 +9,23 @@ namespace Morse_Decoder
     {
         static void Main(string[] args)
         {
-            Console.WriteLine(Text.Greeting);
+            Menu.Introduction();
 
-            string macaco1 = Decoder.Decode(".... . -.--   .--- ..- -.. .");
-            string macaco2 = Decoder.Decode("... --- ...");
+            while (true)
+            {
+                // Show all the options to the user
+                Menu.MainMenu();
 
-            Console.WriteLine($"Resultado 01: {macaco1}.\n");
-            Console.WriteLine($"Resultado 02: {macaco2}.\n");
+                // Menu Controls
+                int option = Menu.UserPickOption(4);
 
-
-            var agoravai = ".---";
-
-            Console.WriteLine(Decoder.MorseToText(".---"));
+                // Encode-Decode
+                Menu.RunOptions(option);
+            }
 
 
         }
-
-
-
-
-
     }
 }
+
+// SystemSound.Beep.Play();

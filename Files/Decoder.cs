@@ -1,7 +1,7 @@
 ﻿using System;
 // No LINQ
 
-namespace Morse_Decoder.Decoders
+namespace Morse_Decoder.Files
 {
     public class Decoder
     {
@@ -47,7 +47,36 @@ namespace Morse_Decoder.Decoders
         "--...", //7
         "---..", //8
         "----.", //9
-        "-----" //0
+        "-----", //0
+
+        ".-.-.-", //.
+        "--..--", // ,
+        "..--..", // ?
+        ".----.", // '
+        "-.-.--", // !
+        "-..-.", // /
+        "-.--.", // (
+        "-.--.-", // )
+        ".-...", // &
+        "---...", // :
+        "-.-.-.", // ;
+        "-...-", // =
+        ".-.-.", // +
+        "-....-", // -
+        "..--.-", // _
+        ".-..-.", // "
+        "...-..-", // $
+        ".--.-.", // @
+        "..-.-", // ¿
+        "--...-", // ¡
+
+        ".-",".-",".-",".-",".-", // As
+        ".",".",".",".", // Es
+        "..","..","..","..", // Is
+        "---","---","---","---","---", // Os
+        "..-","..-","..-","..-", // Us
+        "-.-." // Ç
+
         };
         public static char[] letters = {
         ' ',
@@ -88,10 +117,39 @@ namespace Morse_Decoder.Decoders
         '7',
         '8',
         '9',
-        '0'
+        '0',
+
+        '.',
+        ',',
+        '?',
+        '\'',
+        '!',
+        '/',
+        '(',
+        ')',
+        '&',
+        ':',
+        ';',
+        '=',
+        '+',
+        '-',
+        '_',
+        '"',
+        '$',
+        '@',
+        '¿',
+        '¡',
+
+        'Á','À','Â','Ã','Ä',
+        'É','È','Ê','Ë',
+        'Í','Ì','Î','Ï',
+        'Ó','Ò','Ô','Õ','Ö',
+        'Ú','Ù','Û','Ü',
+        'Ç'
+
         };
 
-        
+
 
         // ----------------
 
@@ -103,16 +161,18 @@ namespace Morse_Decoder.Decoders
             {
                 if (bip == morseBip[i]) return letters[i];
             }
-            return '!';
+            return '?';
         }
 
 
 
         public static string TextToMorse(char letter)
         {
-
-
-            return "AAAAA";
+            for (int i = 0; i < letters.Length; i++)
+            {
+                if (letter == letters[i]) return morseBip[i];
+            }
+            return "[?]";
         }
 
 
@@ -124,7 +184,7 @@ namespace Morse_Decoder.Decoders
         public static string Decode(string morseCode)
         {
             morseCode = morseCode.ToUpper().Trim();
-            string[] words = morseCode.Split(new[] { "   " }, StringSplitOptions.None);
+            string[] words = morseCode.Split(new[] { "   ", " / " }, StringSplitOptions.None);
             string decoded = "";
 
             for (int i = 0; i < words.Length; i++)
@@ -143,10 +203,35 @@ namespace Morse_Decoder.Decoders
             return decoded;
         }
 
-        public static string Encode()
-        {
 
-            return "todo";
+
+        public static string Encode(string textMessage)
+        {
+            textMessage = textMessage.ToUpper().Trim();
+            string[] words = textMessage.Split(' ');
+            string encoded = "";
+
+            for (int i = 0; i < words.Length; i++)
+            {
+                char[] letters = words[i].ToCharArray();
+
+                for (int j = 0; j < letters.Length; j++)
+                {
+                    string morseSignal = Decoder.TextToMorse(letters[j]);
+                    encoded += morseSignal;
+                    if (j < letters.Length - 1) encoded += " ";
+                }
+
+                if (i < words.Length - 1) encoded += "   ";
+            }
+
+            return encoded;
         }
+
+
+
+
+
+
     }
 }
