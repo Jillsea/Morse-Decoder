@@ -6,7 +6,7 @@
 
 The software **Morse Decoder 2021** is a *console application* I wrote entirely using C# and is my first software developed from scratch.
 
-I started learning C# in February/2021 (just a few months after having my first experience with programming in general) and since then I was dealing only with tutorials and a lot of theory ... so to push myself into some practical experience I developed this software here.
+I started learning C# in February/2021 (just a few months after having my first experience with programming in general) and since then I was dealing only with tutorials and a lot of theory... so to push myself into some practical experience I developed this software here.
 
 As an extra challenge I developed everything without LINQ, GENERICS and other things exactly to force myself to find a different solution to the challenges I encountered along the way.
 
@@ -21,3 +21,9 @@ Any feedback is welcome.
 * Pretend you are living in 1920 during the war. (Imagination needed)
 * Question yourself why you are so obsessed with some 19th century technology.
 * Find secret features!
+
+---
+
+### Download: 
+
+v1.0: [**Click Here**](https://github.com/Jillsea/Morse-Decoder/releases/download/1.0/Morse.Decoder.v1.0.rar)
