@@ -151,35 +151,7 @@ namespace Morse_Decoder.Files
 
 
 
-        // ----------------
-
-
-
-        public static char MorseToText(string bip)
-        {
-            for (int i = 0; i < morseBip.Length; i++)
-            {
-                if (bip == morseBip[i]) return letters[i];
-            }
-            return '?';
-        }
-
-
-
-        public static string TextToMorse(char letter)
-        {
-            for (int i = 0; i < letters.Length; i++)
-            {
-                if (letter == letters[i]) return morseBip[i];
-            }
-            return "[?]";
-        }
-
-
-
-        // ----------------
-
-
+        // Encode or Decode each word separately and return the full result
 
         public static string Decode(string morseCode)
         {
@@ -228,6 +200,29 @@ namespace Morse_Decoder.Files
             return encoded;
         }
 
+
+
+        // The 'translator' used in each letter
+
+        public static char MorseToText(string bip)
+        {
+            for (int i = 0; i < morseBip.Length; i++)
+            {
+                if (bip == morseBip[i]) return letters[i];
+            }
+            return '?';
+        }
+
+
+
+        public static string TextToMorse(char letter)
+        {
+            for (int i = 0; i < letters.Length; i++)
+            {
+                if (letter == letters[i]) return morseBip[i];
+            }
+            return "[?]";
+        }
 
 
 

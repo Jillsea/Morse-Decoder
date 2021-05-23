@@ -5,28 +5,57 @@ namespace Morse_Decoder.Files
 {
     class Menu
     {
-        public static void Introduction()
+        public static void About()
         {
-            Console.WriteLine($"{Text.Greeting}");
+            Text.Line(2);
+            Console.WriteLine($"{Text.IntroGreeting}");
 
             Text.Line(1);
-            Console.WriteLine($"{Text.Explanation}");
+            Console.WriteLine($"{Text.IntroExplanation}");
 
             Text.Line(1);
-            Console.WriteLine($"{Text.Instruction}");
+            Console.WriteLine($"{Text.IntroInstruction}");
+
+            Text.Line(3);
+            Console.WriteLine("Press ENTER to go back");
+            Console.ReadLine();
+            Text.Line(3);
+        }
+
+
+        public static void Title()
+        {
+            Console.WriteLine(" ██████   ██████    ███████    ███████████    █████████  ██████████                      ");
+            Console.WriteLine("░░██████ ██████   ███░░░░░███ ░░███░░░░░███  ███░░░░░███░░███░░░░░█                      ");
+            Console.WriteLine(" ░███░█████░███  ███     ░░███ ░███    ░███ ░███    ░░░  ░███  █ ░                       ");
+            Console.WriteLine(" ░███░░███ ░███ ░███      ░███ ░██████████  ░░█████████  ░██████                         ");
+            Console.WriteLine(" ░███ ░░░  ░███ ░███      ░███ ░███░░░░░███  ░░░░░░░░███ ░███░░█                         ");
+            Console.WriteLine(" ░███      ░███ ░░███     ███  ░███    ░███  ███    ░███ ░███ ░   █                      ");
+            Console.WriteLine(" █████     █████ ░░░███████░   █████   █████░░█████████  ██████████                      ");
+            Console.WriteLine("░░░░░     ░░░░░    ░░░░░░░    ░░░░░   ░░░░░  ░░░░░░░░░  ░░░░░░░░░░                       ");
+            Console.WriteLine(" ██████████   ██████████   █████████     ███████    ██████████   ██████████ ███████████  ");
+            Console.WriteLine("░░███░░░░███ ░░███░░░░░█  ███░░░░░███  ███░░░░░███ ░░███░░░░███ ░░███░░░░░█░░███░░░░░███ ");
+            Console.WriteLine(" ░███   ░░███ ░███  █ ░  ███     ░░░  ███     ░░███ ░███   ░░███ ░███  █ ░  ░███    ░███ ");
+            Console.WriteLine(" ░███    ░███ ░██████   ░███         ░███      ░███ ░███    ░███ ░██████    ░██████████  ");
+            Console.WriteLine(" ░███    ░███ ░███░░█   ░███         ░███      ░███ ░███    ░███ ░███░░█    ░███░░░░░███ ");
+            Console.WriteLine(" ░███    ███  ░███ ░   █░░███     ███░░███     ███  ░███    ███  ░███ ░   █ ░███    ░███ ");
+            Console.WriteLine(" ██████████   ██████████ ░░█████████  ░░░███████░   ██████████   ██████████ █████   █████");
+            Console.WriteLine("░░░░░░░░░░   ░░░░░░░░░░   ░░░░░░░░░     ░░░░░░░    ░░░░░░░░░░   ░░░░░░░░░░ ░░░░░   ░░░░░ ");
         }
 
 
         public static void MainMenu()
         {
             Text.Line(2);
-            Console.WriteLine($"=========");
+            Title();
             Text.Line(2);
 
-            Console.WriteLine($"Pick an option, type its number and press ENTER:");
+
+            Console.WriteLine($"Pick an option by typing it's number then press ENTER:");
             Console.WriteLine($"[1] Text to Morse (Encode)");
             Console.WriteLine($"[2] Morse to Text (Decode)");
-            Console.WriteLine($"[3] Close");
+            Console.WriteLine($"[3] What's \"Morse Code\"");
+            Console.WriteLine($"[4] Close");
         }
 
 
@@ -85,7 +114,7 @@ namespace Morse_Decoder.Files
                 userInput = Console.ReadLine();
 
                 Text.Line(1);
-                Console.WriteLine("Morse translation ready:");
+                Console.WriteLine("Translation to Morse ready:");
                 Console.Write("> ");
                 Console.WriteLine(Decoder.Encode(userInput));
 
@@ -109,7 +138,7 @@ namespace Morse_Decoder.Files
                 userInput = Console.ReadLine();
 
                 Text.Line(1);
-                Console.WriteLine("Text translation ready:");
+                Console.WriteLine("Translation to text ready:");
                 Console.Write("> ");
                 Console.WriteLine(Decoder.Decode(userInput));
 
@@ -121,7 +150,7 @@ namespace Morse_Decoder.Files
         public static int GoBackMenu()
         {
             Text.Line(2);
-            Console.WriteLine("Do you want to create a new message?");
+            Console.WriteLine("Do you want to translate another message?");
             Console.WriteLine("[1] Yes.");
             Console.WriteLine("[2] No. Take me to the Main Menu.");
             Console.WriteLine("[3] No. Exit Program.");
@@ -146,10 +175,15 @@ namespace Morse_Decoder.Files
                     break;
 
                 case 3:
-                    End();
+                    Console.Beep();
+                    About();
                     break;
 
                 case 4:
+                    End();
+                    break;
+
+                case 5:
                     Text.SecretMenu();
                     break;
 
