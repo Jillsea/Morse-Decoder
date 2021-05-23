@@ -6,6 +6,8 @@ namespace Morse_Decoder.Files
 {
     public class Text
     {
+        // TO DO: Add multiple Languages
+
         private static string introGreeting = "Welcome to [MORSE DECODER] (2021)";
         public static string IntroGreeting { get => introGreeting; }
 
@@ -16,7 +18,7 @@ namespace Morse_Decoder.Files
 
         //
 
-        private static string introInstruction = "With this software RIGHT HERE you can translate any message from [Morse Code] to Text and vice versa using the International Morse Standard. You can also listen how your message will sound (Work in Progress).";
+        private static string introInstruction = "With this software RIGHT HERE you can translate any message from [Morse Code] to Text and vice versa using the International Morse Standard. You can also listen how your message will sound in the \"Text to Morse\" menu.";
         public static string IntroInstruction { get => introInstruction; }
 
         //

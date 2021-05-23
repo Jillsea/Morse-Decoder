@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Media;
 using Morse_Decoder.Files;
 // No LINQ
 
@@ -9,21 +8,19 @@ namespace Morse_Decoder
     {
         static void Main(string[] args)
         {
+
             while (true)
             {
                 // Show all the options to the user
                 Menu.MainMenu();
 
-                // Menu Controls
+                // User choose an option
                 int option = Menu.UserPickOption(5);
 
-                // Encode-Decode
+                // Run selected option
                 Menu.RunOptions(option);
             }
-
 
         }
     }
 }
-
-// SystemSound.Beep.Play();

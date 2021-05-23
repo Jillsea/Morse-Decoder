@@ -17,7 +17,7 @@ namespace Morse_Decoder.Files
             Console.WriteLine($"{Text.IntroInstruction}");
 
             Text.Line(3);
-            Console.WriteLine("Press ENTER to go back");
+            Console.WriteLine("[Press ENTER to go back]");
             Console.ReadLine();
             Text.Line(3);
         }
@@ -99,29 +99,6 @@ namespace Morse_Decoder.Files
         }
 
 
-        private static void TextToMorse()
-        {
-            int exit = 1;
-
-            while (exit == 1)
-            {
-                string userInput;
-
-                Text.Line(2);
-                Console.WriteLine(Text.TextInstruction);
-                Console.Write("> ");
-
-                userInput = Console.ReadLine();
-
-                Text.Line(1);
-                Console.WriteLine("Translation to Morse ready:");
-                Console.Write("> ");
-                Console.WriteLine(Decoder.Encode(userInput));
-
-                exit = GoBackMenu();
-            }
-        }
-
 
         private static void MorseToText()
         {
@@ -145,6 +122,71 @@ namespace Morse_Decoder.Files
                 exit = GoBackMenu();
             }
         }
+
+
+
+        private static void TextToMorse()
+        {
+            int exit = 1;
+
+            while (exit == 1)
+            {
+                string userInput;
+
+                // Instructions
+                Text.Line(2);
+                Console.WriteLine(Text.TextInstruction);
+                Console.Write("> ");
+
+                // Translate user text
+                userInput = Console.ReadLine();
+                userInput = Decoder.Encode(userInput);
+
+                // Show result
+                Text.Line(1);
+                Console.WriteLine("Translation to Morse ready:");
+                Console.Write("> ");
+                Console.WriteLine(userInput);
+
+                // Offer to play the Morse Code
+                PlayMorseMenu(userInput);
+
+                exit = GoBackMenu();
+            }
+        }
+
+
+
+        public static void PlayMorseMenu(string morseCode)
+        {
+            Text.Line(2);
+            Console.WriteLine("Play the Morse Code as a sound");
+            Console.WriteLine("[1] Yes.");
+            Console.WriteLine("[2] No.");
+
+            int playMorse = UserPickOption(2);
+
+            if (playMorse == 1)
+            {
+                while (playMorse == 1)
+                {
+                    Text.Line(1);
+                    Console.WriteLine("Now Playing:");
+                    Console.Write($"> {morseCode}");
+                    Sounds.PlayMorse(morseCode);
+
+                    Text.Line(2);
+                    Console.WriteLine("Play again?");
+                    Console.WriteLine("[1] Yes.");
+                    Console.WriteLine("[2] No.");
+
+                    playMorse = UserPickOption(2);
+                }
+            }
+
+        }
+
+
 
 
         public static int GoBackMenu()
@@ -175,7 +217,6 @@ namespace Morse_Decoder.Files
                     break;
 
                 case 3:
-                    Console.Beep();
                     About();
                     break;
 
