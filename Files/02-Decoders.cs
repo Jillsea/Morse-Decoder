@@ -235,6 +235,14 @@ namespace Morse_Decoder.Files
 
 
 
+        internal void PrintDictionary()
+        {
+            for (int i = 1; i < letters.Length - 43; i++)
+            {
+                Console.WriteLine($"{letters[i]} = {morseBip[i]}");
+            }
+        }
+
 
 
     }

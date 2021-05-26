@@ -31,7 +31,7 @@ namespace Morse_Decoder.Files
             Console.WriteLine($"[1] Text to Morse. (Encode)");
             Console.WriteLine($"[2] Morse to Text. (Decode)");
             Console.WriteLine($"[3] What's \"Morse Code\".");
-            Console.WriteLine($"[4] Show me the Morse symbols.");
+            Console.WriteLine($"[4] Show me all Morse symbols.");
             Console.WriteLine($"[5] Close.");
         }
 
@@ -108,14 +108,17 @@ namespace Morse_Decoder.Files
                     break;
 
                 case 4:
-                    submenu.End();
+                    submenu.DictionaryOption();
                     break;
 
                 case 5:
+                    submenu.End();
+                    break;
+
+                case 6:
                     submenu.SecretMenu();
                     break;
 
-                // Adicionar depois uma forma de printar na tela todas letras tipo "S = ---" para quem quiser ver o dicionario completo.
 
                 default:
                     Console.WriteLine("How you got here?!");

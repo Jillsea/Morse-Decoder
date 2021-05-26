@@ -136,6 +136,21 @@ namespace Morse_Decoder.Files
         }
 
 
+        protected internal void DictionaryOption()
+        {
+            Text.Line(2);
+            Console.WriteLine("Letter to Morse Signals");
+            Text.Line(1);
+
+            translator.PrintDictionary();
+
+            Text.Line(3);
+            Console.WriteLine("[Press ENTER to go back]");
+            Console.ReadLine();
+            Text.Line(3);
+        }
+
+
 
         // It's only possible to close the programm through this method
         protected internal void End()
