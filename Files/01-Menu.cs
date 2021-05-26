@@ -7,7 +7,7 @@ namespace Morse_Decoder.Files
     {
 
         // Main Method
-        public static void RunMainMenu()
+        public void RunMainMenu()
         {
             while (true)
             {
@@ -20,7 +20,7 @@ namespace Morse_Decoder.Files
 
 
 
-        private static void MainMenu()
+        private void MainMenu()
         {
             Text.Line(2);
             Text.Title();
@@ -37,7 +37,8 @@ namespace Morse_Decoder.Files
 
 
 
-        // This method makes sure the user picks a valid option
+        // This method MAKES SURE the user picks a valid option
+        // Public+Static because can be used anywhere
         public static int UserPickOption(int maxOptions)
         {
             int option = 0;
@@ -88,28 +89,30 @@ namespace Morse_Decoder.Files
 
 
 
-        private static void RunOptions(int option)
+        private void RunOptions(int option)
         {
+            Submenu submenu = new Submenu();
+
             switch (option)
             {
                 case 1:
-                    Submenu.TextToMorse();
+                    submenu.TextToMorse();
                     break;
 
                 case 2:
-                    Submenu.MorseToText();
+                    submenu.MorseToText();
                     break;
 
                 case 3:
-                    About();
+                    submenu.About();
                     break;
 
                 case 4:
-                    End();
+                    submenu.End();
                     break;
 
                 case 5:
-                    Text.SecretMenu();
+                    submenu.SecretMenu();
                     break;
 
                 // Adicionar depois uma forma de printar na tela todas letras tipo "S = ---" para quem quiser ver o dicionario completo.
@@ -119,43 +122,6 @@ namespace Morse_Decoder.Files
                     break;
             }
         }
-
-
-
-        public static void About()
-        {
-            Text.Line(2);
-            Console.WriteLine($"{Text.IntroGreeting}");
-
-            Text.Line(1);
-            Console.WriteLine($"{Text.IntroExplanation}");
-
-            Text.Line(1);
-            Console.WriteLine($"{Text.IntroInstruction}");
-
-            Text.Line(3);
-            Console.WriteLine("[Press ENTER to go back]");
-            Console.ReadLine();
-            Text.Line(3);
-        }
-
-
-
-        // It's only possible to close the programm through this method
-        public static void End()
-        {
-            Text.Line(2);
-            Console.WriteLine("See you next time!");
-            Console.WriteLine("==================");
-            Text.Line(2);
-
-            Environment.Exit(0);
-        }
-
-
-
-
-
 
 
 

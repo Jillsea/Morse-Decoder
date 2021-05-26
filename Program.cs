@@ -10,7 +10,8 @@ namespace Morse_Decoder
         static void Main(string[] args)
         {
 
-            Menu.RunMainMenu();
+            Menu runApp = new Menu();
+            runApp.RunMainMenu();
 
         }
     }

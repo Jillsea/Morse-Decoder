@@ -4,11 +4,11 @@
 
 namespace Morse_Decoder.Files
 {
-    class Decoder
+    class Decoders
     {
-        // . = dit
-        // - = dah
-        public static string[] morseBip = {
+
+        // Not using dictionaries
+        private readonly string[] morseBip = {
 
         "  ", //
 
@@ -79,7 +79,7 @@ namespace Morse_Decoder.Files
         "-.-." // Ç
 
         };
-        public static char[] letters = {
+        private readonly char[] letters = {
         ' ',
 
         'A',
@@ -152,7 +152,7 @@ namespace Morse_Decoder.Files
 
 
 
-        public static string Decode(string morseCode)
+        internal string Decode(string morseCode)
         {
             // Fix the string if needed  
             morseCode = morseCode
@@ -184,7 +184,7 @@ namespace Morse_Decoder.Files
 
         // Almost the same as above but with Chars
         // It was too confusing when it was a single method to encode/decode
-        public static string Encode(string textMessage)
+        internal string Encode(string textMessage)
         {
             textMessage = textMessage
                 .ToUpper()
@@ -213,7 +213,7 @@ namespace Morse_Decoder.Files
 
 
         // The 'translators' used in each letter
-        public static char MorseToText(string bip)
+        private char MorseToText(string bip)
         {
             for (int i = 0; i < morseBip.Length; i++)
             {
@@ -224,7 +224,7 @@ namespace Morse_Decoder.Files
 
 
 
-        public static string TextToMorse(char letter)
+        private string TextToMorse(char letter)
         {
             for (int i = 0; i < letters.Length; i++)
             {
