@@ -9,7 +9,7 @@ namespace Morse_Decoder.Files
         // I really need to learn how to properly use .wav files in NET 5.0
 
         static int beepTone = 500;
-        static int beepDuration = 100; // Miliseconds
+        static int beepDuration = 120; // Miliseconds
 
 
 
@@ -36,7 +36,7 @@ namespace Morse_Decoder.Files
 
 
 
-        // Main Sound Method
+        // Main Method to play the sounds
         public static void PlayMorse(string morseCode)
         {
             char[] morseSounds = morseCode.ToCharArray();

@@ -1,6 +1,7 @@
 ﻿using System;
 using Morse_Decoder.Files;
-// No LINQ
+// No LINQ, Generics, etc (Challenge)
+// [All the code won't use most common libraries on purpose]
 
 namespace Morse_Decoder
 {
@@ -9,17 +10,7 @@ namespace Morse_Decoder
         static void Main(string[] args)
         {
 
-            while (true)
-            {
-                // Show all the options to the user
-                Menu.MainMenu();
-
-                // User choose an option
-                int option = Menu.UserPickOption(5);
-
-                // Run selected option
-                Menu.RunOptions(option);
-            }
+            Menu.RunMainMenu();
 
         }
     }

@@ -1,10 +1,127 @@
 ﻿using System;
-// No LINQ
+// No LINQ, Generics, etc (Challenge)
 
 namespace Morse_Decoder.Files
 {
     class Menu
     {
+
+        // Main Method
+        public static void RunMainMenu()
+        {
+            while (true)
+            {
+                MainMenu();
+
+                int option = UserPickOption(5);
+                RunOptions(option);
+            }
+        }
+
+
+
+        private static void MainMenu()
+        {
+            Text.Line(2);
+            Text.Title();
+            Text.Line(2);
+
+
+            Console.WriteLine($"Pick an option by typing it's number then press ENTER:");
+            Console.WriteLine($"[1] Text to Morse. (Encode)");
+            Console.WriteLine($"[2] Morse to Text. (Decode)");
+            Console.WriteLine($"[3] What's \"Morse Code\".");
+            Console.WriteLine($"[4] Show me the Morse symbols.");
+            Console.WriteLine($"[5] Close.");
+        }
+
+
+
+        // This method makes sure the user picks a valid option
+        public static int UserPickOption(int maxOptions)
+        {
+            int option = 0;
+            int invalidInput = 0;
+
+            // Keep running until a valid input is used
+            bool unlock = false;
+            while (unlock == false)
+            {
+                Console.Write("> ");
+                string userOption = Console.ReadLine();
+
+                // Checks if user input was a number
+                if (int.TryParse(userOption, out int number))
+                {
+                    option = int.Parse(userOption);
+                }
+                else
+                {
+                    Console.WriteLine("Only numbers are valid.");
+                }
+
+                // Checks if the number was valid
+                if (option > 0 && option <= maxOptions)
+                {
+                    unlock = true;
+                }
+                else if (invalidInput < 5)
+                {
+                    Console.WriteLine("Pick a valid option please...");
+                    invalidInput++;
+                }
+                else
+                {
+                    Console.WriteLine("CAN YOU PLEASE... TYPE A VALID NUMBER... SERIOUSLY...");
+                    invalidInput++;
+                }
+            }
+
+            // Just a joke in case the user tries too many invalid inputs
+            if (invalidInput > 6)
+            {
+                Console.WriteLine($"\nWow {invalidInput} tries until you finally picked a valid option in this menu WHAT A SMART GUY YOU MUST BE.\n");
+            }
+
+            return option;
+        }
+
+
+
+        private static void RunOptions(int option)
+        {
+            switch (option)
+            {
+                case 1:
+                    Submenu.TextToMorse();
+                    break;
+
+                case 2:
+                    Submenu.MorseToText();
+                    break;
+
+                case 3:
+                    About();
+                    break;
+
+                case 4:
+                    End();
+                    break;
+
+                case 5:
+                    Text.SecretMenu();
+                    break;
+
+                // Adicionar depois uma forma de printar na tela todas letras tipo "S = ---" para quem quiser ver o dicionario completo.
+
+                default:
+                    Console.WriteLine("How you got here?!");
+                    break;
+            }
+        }
+
+
+
         public static void About()
         {
             Text.Line(2);
@@ -23,218 +140,8 @@ namespace Morse_Decoder.Files
         }
 
 
-        public static void Title()
-        {
-            Console.WriteLine(" ██████   ██████    ███████    ███████████    █████████  ██████████                      ");
-            Console.WriteLine("░░██████ ██████   ███░░░░░███ ░░███░░░░░███  ███░░░░░███░░███░░░░░█                      ");
-            Console.WriteLine(" ░███░█████░███  ███     ░░███ ░███    ░███ ░███    ░░░  ░███  █ ░                       ");
-            Console.WriteLine(" ░███░░███ ░███ ░███      ░███ ░██████████  ░░█████████  ░██████                         ");
-            Console.WriteLine(" ░███ ░░░  ░███ ░███      ░███ ░███░░░░░███  ░░░░░░░░███ ░███░░█                         ");
-            Console.WriteLine(" ░███      ░███ ░░███     ███  ░███    ░███  ███    ░███ ░███ ░   █                      ");
-            Console.WriteLine(" █████     █████ ░░░███████░   █████   █████░░█████████  ██████████                      ");
-            Console.WriteLine("░░░░░     ░░░░░    ░░░░░░░    ░░░░░   ░░░░░  ░░░░░░░░░  ░░░░░░░░░░                       ");
-            Console.WriteLine(" ██████████   ██████████   █████████     ███████    ██████████   ██████████ ███████████  ");
-            Console.WriteLine("░░███░░░░███ ░░███░░░░░█  ███░░░░░███  ███░░░░░███ ░░███░░░░███ ░░███░░░░░█░░███░░░░░███ ");
-            Console.WriteLine(" ░███   ░░███ ░███  █ ░  ███     ░░░  ███     ░░███ ░███   ░░███ ░███  █ ░  ░███    ░███ ");
-            Console.WriteLine(" ░███    ░███ ░██████   ░███         ░███      ░███ ░███    ░███ ░██████    ░██████████  ");
-            Console.WriteLine(" ░███    ░███ ░███░░█   ░███         ░███      ░███ ░███    ░███ ░███░░█    ░███░░░░░███ ");
-            Console.WriteLine(" ░███    ███  ░███ ░   █░░███     ███░░███     ███  ░███    ███  ░███ ░   █ ░███    ░███ ");
-            Console.WriteLine(" ██████████   ██████████ ░░█████████  ░░░███████░   ██████████   ██████████ █████   █████");
-            Console.WriteLine("░░░░░░░░░░   ░░░░░░░░░░   ░░░░░░░░░     ░░░░░░░    ░░░░░░░░░░   ░░░░░░░░░░ ░░░░░   ░░░░░ ");
-        }
 
-
-        public static void MainMenu()
-        {
-            Text.Line(2);
-            Title();
-            Text.Line(2);
-
-
-            Console.WriteLine($"Pick an option by typing it's number then press ENTER:");
-            Console.WriteLine($"[1] Text to Morse (Encode)");
-            Console.WriteLine($"[2] Morse to Text (Decode)");
-            Console.WriteLine($"[3] What's \"Morse Code\"");
-            Console.WriteLine($"[4] Close");
-        }
-
-
-        // This method makes sure the user picks a valid option
-        public static int UserPickOption(int maxOptions)
-        {
-            int option = 0;
-            int invalidInput = 0;
-
-            bool unlock = false;
-            while (unlock == false)
-            {
-                Console.Write("> ");
-                string userOption = Console.ReadLine();
-                if (int.TryParse(userOption, out int number))
-                {
-                    option = int.Parse(userOption);
-                }
-                else
-                {
-                    Console.WriteLine("Only numbers are valid.");
-                }
-
-
-                if (option > 0 && option <= maxOptions) { unlock = true; }
-                else if (invalidInput < 5)
-                {
-                    Console.WriteLine("Pick a valid option please...");
-                    invalidInput++;
-                }
-                else
-                {
-                    Console.WriteLine("CAN YOU PLEASE... TYPE A VALID NUMBER... SERIOUSLY...");
-                    invalidInput++;
-                }
-            }
-
-            if (invalidInput > 6) { Console.WriteLine($"\nWow {invalidInput} tries until you finally picked a valid option in this menu WHAT A SMART GUY YOU MUST BE.\n"); }
-
-            return option;
-        }
-
-
-
-        private static void MorseToText()
-        {
-            int exit = 1;
-
-            while (exit == 1)
-            {
-                string userInput;
-
-                Text.Line(2);
-                Console.WriteLine(Text.MorseInstruction);
-                Console.Write("> ");
-
-                userInput = Console.ReadLine();
-
-                Text.Line(1);
-                Console.WriteLine("Translation to text ready:");
-                Console.Write("> ");
-                Console.WriteLine(Decoder.Decode(userInput));
-
-                exit = GoBackMenu();
-            }
-        }
-
-
-
-        private static void TextToMorse()
-        {
-            int exit = 1;
-
-            while (exit == 1)
-            {
-                string userInput;
-
-                // Instructions
-                Text.Line(2);
-                Console.WriteLine(Text.TextInstruction);
-                Console.Write("> ");
-
-                // Translate user text
-                userInput = Console.ReadLine();
-                userInput = Decoder.Encode(userInput);
-
-                // Show result
-                Text.Line(1);
-                Console.WriteLine("Translation to Morse ready:");
-                Console.Write("> ");
-                Console.WriteLine(userInput);
-
-                // Offer to play the Morse Code
-                PlayMorseMenu(userInput);
-
-                exit = GoBackMenu();
-            }
-        }
-
-
-
-        public static void PlayMorseMenu(string morseCode)
-        {
-            Text.Line(2);
-            Console.WriteLine("Play the Morse Code as a sound");
-            Console.WriteLine("[1] Yes.");
-            Console.WriteLine("[2] No.");
-
-            int playMorse = UserPickOption(2);
-
-            if (playMorse == 1)
-            {
-                while (playMorse == 1)
-                {
-                    Text.Line(1);
-                    Console.WriteLine("Now Playing:");
-                    Console.Write($"> {morseCode}");
-                    Sounds.PlayMorse(morseCode);
-
-                    Text.Line(2);
-                    Console.WriteLine("Play again?");
-                    Console.WriteLine("[1] Yes.");
-                    Console.WriteLine("[2] No.");
-
-                    playMorse = UserPickOption(2);
-                }
-            }
-
-        }
-
-
-
-
-        public static int GoBackMenu()
-        {
-            Text.Line(2);
-            Console.WriteLine("Do you want to translate another message?");
-            Console.WriteLine("[1] Yes.");
-            Console.WriteLine("[2] No. Take me to the Main Menu.");
-            Console.WriteLine("[3] No. Exit Program.");
-
-            int goBack = UserPickOption(3);
-            if (goBack == 3) { End(); }
-
-            return goBack;
-        }
-
-
-        public static void RunOptions(int option)
-        {
-            switch (option)
-            {
-                case 1:
-                    TextToMorse();
-                    break;
-
-                case 2:
-                    MorseToText();
-                    break;
-
-                case 3:
-                    About();
-                    break;
-
-                case 4:
-                    End();
-                    break;
-
-                case 5:
-                    Text.SecretMenu();
-                    break;
-
-                default:
-                    Console.WriteLine("How you got here?!");
-                    break;
-            }
-        }
-
-
+        // It's only possible to close the programm through this method
         public static void End()
         {
             Text.Line(2);

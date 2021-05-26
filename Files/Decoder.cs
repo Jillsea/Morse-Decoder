@@ -1,9 +1,10 @@
 ﻿using System;
-// No LINQ
+// No LINQ, Generics, etc (Challenge)
+// There's no dictionary here because I'm not using the Generics library
 
 namespace Morse_Decoder.Files
 {
-    public class Decoder
+    class Decoder
     {
         // . = dit
         // - = dah
@@ -151,21 +152,26 @@ namespace Morse_Decoder.Files
 
 
 
-        // Encode or Decode each word separately and return the full result
-
         public static string Decode(string morseCode)
         {
-            morseCode = morseCode.ToUpper().Trim();
+            // Fix the string if needed  
+            morseCode = morseCode
+                .ToUpper()
+                .Trim();
+
+            // Split the string into words
             string[] words = morseCode.Split(new[] { "   ", " / " }, StringSplitOptions.None);
             string decoded = "";
 
+            // This loop deals with each word
             for (int i = 0; i < words.Length; i++)
             {
                 string[] letters = words[i].Split(' ');
 
+                // This internal loop deals with each letter from each word
                 for (int j = 0; j < letters.Length; j++)
                 {
-                    letters[j] = Decoder.MorseToText(letters[j]).ToString();
+                    letters[j] = MorseToText(letters[j]).ToString();
                     decoded += letters[j];
                 }
 
@@ -176,10 +182,14 @@ namespace Morse_Decoder.Files
         }
 
 
-
+        // Almost the same as above but with Chars
+        // It was too confusing when it was a single method to encode/decode
         public static string Encode(string textMessage)
         {
-            textMessage = textMessage.ToUpper().Trim();
+            textMessage = textMessage
+                .ToUpper()
+                .Trim();
+
             string[] words = textMessage.Split(' ');
             string encoded = "";
 
@@ -189,7 +199,7 @@ namespace Morse_Decoder.Files
 
                 for (int j = 0; j < letters.Length; j++)
                 {
-                    string morseSignal = Decoder.TextToMorse(letters[j]);
+                    string morseSignal = TextToMorse(letters[j]);
                     encoded += morseSignal;
                     if (j < letters.Length - 1) encoded += " ";
                 }
@@ -202,8 +212,7 @@ namespace Morse_Decoder.Files
 
 
 
-        // The 'translator' used in each letter
-
+        // The 'translators' used in each letter
         public static char MorseToText(string bip)
         {
             for (int i = 0; i < morseBip.Length; i++)
