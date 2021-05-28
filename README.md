@@ -4,7 +4,7 @@
 
 ### About:
 
-The software **Morse Decoder 2021** is a *console application* I wrote entirely using C# and is my first software developed from scratch.
+The software **Morse Decoder 2021** is a *console application* I wrote entirely using C# as my first software developed from scratch.
 
 I started learning C# in February/2021 (just a few months after having my first experience with programming in general) and since then I was dealing only with tutorials and a lot of theory... so to push myself into some practical experience I developed this software here.
 
@@ -26,4 +26,4 @@ Any feedback is welcome.
 
 ### Download: 
 
-v1.0: [**Click Here**](https://github.com/Jillsea/Morse-Decoder/releases/download/1.0/Morse.Decoder.v1.0.rar)
+v1.1: [**Click Here**](https://github.com/Jillsea/Morse-Decoder/releases/download/v1.1/Morse-Decoder-v1.1.zip)
