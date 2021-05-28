@@ -13,7 +13,7 @@ namespace Morse_Decoder.Files
             {
                 MainMenu();
 
-                int option = UserPickOption(5);
+                int option = UserPickOption(6);
                 RunOptions(option);
             }
         }
